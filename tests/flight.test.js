@@ -4,6 +4,7 @@ describe("Flight", () => {
   describe("getDurationInHours", () => {
     it("Should return correct duration.", () => {
       const flight = new Flight(
+        "id",
         new Date("2017-06-01T21:00:00.000Z"),
         new Date("2017-06-01T23:00:00.000Z"),
         "JFK",
@@ -16,6 +17,7 @@ describe("Flight", () => {
   describe("getScore", () => {
     it("should return 6.8 for 2 hour flight * preferred carrier * 5 miles.", () => {
       const flight = new Flight(
+        "id",
         new Date("2017-06-01T21:00:00.000Z"),
         new Date("2017-06-01T23:00:00.000Z"),
         "JFK",
@@ -27,6 +29,7 @@ describe("Flight", () => {
 
     it("should return 7 for 2 hour flight * not preferred carrier * 5 miles.", () => {
       const flight = new Flight(
+        "id",
         new Date("2017-06-01T21:00:00.000Z"),
         new Date("2017-06-01T23:00:00.000Z"),
         "JFK",

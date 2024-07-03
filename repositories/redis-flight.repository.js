@@ -23,11 +23,12 @@ module.exports = class RedisFlightRepository {
       flights = await this.#flightRepository.getFlights();
       await this.#redis.lpush("flights", flights.map(JSON.stringify));
       // Expire in 5 seconds
-      await this.#redis.expire("flights", 60);
+      await this.#redis.expire("flights", 5);
     } else {
       flights = cached.map((m) => {
         const f = JSON.parse(m);
         return new Flight(
+          f.id,
           new Date(f.departureTime),
           new Date(f.arrivalTime),
           f.origin,

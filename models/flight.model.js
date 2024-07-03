@@ -1,5 +1,6 @@
 module.exports = class Flight {
-  constructor(departureTime, arrivalTime, origin, destination, carrier) {
+  constructor(id, departureTime, arrivalTime, origin, destination, carrier) {
+    this.id = id;
     this.departureTime = new Date(departureTime);
     this.arrivalTime = new Date(arrivalTime);
     this.origin = origin;

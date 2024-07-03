@@ -37,14 +37,12 @@ describe("App", () => {
       expect(response.statusCode).toBe(200);
       const flights = response.body;
       expect(flights.length).toBe(1);
-      expect(flights[0]).toEqual({
-        arrivalTime: "2017-06-01T22:21:17.274Z",
-        carrier: "FR",
-        departureTime: "2017-06-01T21:21:17.274Z",
-        destination: "BUR",
-        origin: "SJC",
-        score: 297.2,
-      });
+      expect(flights[0].arrivalTime).toBe("2017-06-01T22:21:17.274Z");
+      expect(flights[0].carrier).toBe("FR");
+      expect(flights[0].departureTime).toBe("2017-06-01T21:21:17.274Z");
+      expect(flights[0].destination).toBe("BUR");
+      expect(flights[0].origin).toBe("SJC");
+      expect(flights[0].score).toBe(297.2);
     });
   });
 });

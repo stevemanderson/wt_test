@@ -36,8 +36,8 @@ module.exports = class RedisAirportRepository {
             f.country,
             f.iata,
             f.icao,
-            f.lat,
-            f.lng
+            f.latitude,
+            f.longitude
           )
         }
       );

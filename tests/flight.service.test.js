@@ -10,6 +10,7 @@ const mockRepo = {
     return flights.map(
       (f) =>
         new Flight(
+          "id",
           new Date(f.departureTime),
           new Date(f.arrivalTime),
           f.origin,
