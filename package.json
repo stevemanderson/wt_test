@@ -1,0 +1,23 @@
+{
+  "name": "whereto_test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest --watch",
+    "dev": "npx nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "haversine": "^1.1.1"
+  },
+  "devDependencies": {
+    "csv-parse": "^5.5.6",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
+  }
+}

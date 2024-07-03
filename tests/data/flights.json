@@ -1,0 +1,30 @@
+[
+  {
+    "departureTime": "2017-06-01T21:21:17.274Z",
+    "arrivalTime": "2017-06-01T22:21:17.274Z",
+    "carrier": "FR",
+    "origin": "SJC",
+    "destination": "BUR"
+  },
+  {
+    "departureTime": "2017-06-01T21:21:17.331Z",
+    "arrivalTime": "2017-06-02T09:21:17.331Z",
+    "carrier": "FR",
+    "origin": "JFK",
+    "destination": "AUS"
+  },
+  {
+    "departureTime": "2017-06-01T21:21:17.306Z",
+    "arrivalTime": "2017-06-02T03:21:17.306Z",
+    "carrier": "FR",
+    "origin": "SJC",
+    "destination": "DEN"
+  },
+  {
+    "departureTime": "2017-06-01T21:21:17.291Z",
+    "arrivalTime": "2017-06-02T14:21:17.291Z",
+    "carrier": "SW",
+    "origin": "SFO",
+    "destination": "DEN"
+  }
+]
