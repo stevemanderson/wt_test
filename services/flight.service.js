@@ -30,21 +30,11 @@ module.exports = class FlightService {
   async getFlights(criteria) {
     let flights = await this.#repository.getFlights();
 
-    if (criteria?.departure) {
-      flights = flights.filter((f) =>
-        criteria?.departure.within(f.departureTime)
-      );
-    }
-
-    if (criteria?.maxDuration) {
-      flights = flights.filter(
-        (f) => f.getDurationInHours() <= criteria.maxDuration
-      );
-    }
-
-    if (criteria?.preferredCarrier) {
-      flights = flights.filter((f) => f.carrier === criteria.preferredCarrier);
-    }
+    flights = flights.filter(f => 
+      (!criteria?.departure || criteria?.departure.within(f.departureTime)) &&
+      (!criteria?.maxDuration || f.getDurationInHours() <= criteria.maxDuration) &&
+      (!criteria?.preferredCarrier || f.carrier === criteria.preferredCarrier) 
+    );
 
     const origins = [...new Set(flights.map((p) => p.origin))];
     const destinations = [...new Set(flights.map((p) => p.destination))];
