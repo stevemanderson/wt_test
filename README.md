@@ -13,6 +13,10 @@ Flights and airports are cached for 5 seconds in the redis lists.
 ./scripts/search.sh
 
 ## TODO
+- with the cache in place and an id associated to the flight, within the TTL of the flights
+if I increase them to say 10 minutes, I can then allow users to choose the flight and cache those
+    selections in redis with a TTL. On the TTL event for the flights, I would invalidate the users'
+    selected flights.
 - there is little logging 
     - ~~use morgan for HTTP logs~~ 
     - use Bunyan for application logs
