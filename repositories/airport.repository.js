@@ -11,7 +11,7 @@ module.exports = class AirportRepository {
   }
 
   /**
-   * @returns {{Flight[]}}
+   * @returns {{Airport[]}}
    */
   async getAirports() {
     const airports = require('../data/airports.json');

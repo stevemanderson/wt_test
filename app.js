@@ -1,14 +1,21 @@
 const express = require("express");
-const FlightService = require("./services/flight.service");
-const FlightRepository = require("./repositories/flight.repository");
-const AirportRepository = require("./repositories/airport.repository");
-const AirportService = require("./services/airport.service");
+const morgan = require("morgan");
 const { checkSchema, validationResult } = require("express-validator");
 const { DateRange } = require("./utils");
 const app = express();
+app.use(morgan("combined"));
+
 const PROVIDER_URL =
   "https://gist.githubusercontent.com/bgdavidx/132a9e3b9c70897bc07cfa5ca25747be/raw/8dbbe1db38087fad4a8c8ade48e741d6fad8c872/gistfile1.txt";
 const AIRPORT_FILE = "./data/airports.json";
+const Factory = require("./factory");
+
+let factoryInstance;
+if (process.env.REDIS_ENABLED === "1") {
+  factoryInstance = new Factory.RedisFactory(PROVIDER_URL, AIRPORT_FILE);
+} else {
+  factoryInstance = new Factory.DefaultFactory(PROVIDER_URL, AIRPORT_FILE);
+}
 
 app.use(express.json());
 const defaultRouter = express.Router();
@@ -24,7 +31,7 @@ function validate(req, res, next) {
 }
 
 airportsRouter.get("/", (req, res) => {
-  const service = new AirportService();
+  const service = factoryInstance.createAirportService();
 });
 
 defaultRouter.post(
@@ -51,10 +58,7 @@ defaultRouter.post(
   async (req, res) => {
     const { departureMin, departureMax, maxDuration, preferredCarrier } =
       req.body;
-    const service = new FlightService(
-      new AirportService(new AirportRepository(AIRPORT_FILE)),
-      new FlightRepository(PROVIDER_URL)
-    );
+    const service = factoryInstance.createFlightService();
     res.statusCode = 200;
     const criteria = {
       departure:
