@@ -5,12 +5,12 @@ const { DateRange } = require("../utils");
 
 module.exports = class FlightService {
   /**
-   * @type {{AirportService}}
+   * @type {AirportService}
    */
   #airportService;
 
   /**
-   * @type {{FlightRepository}}
+   * @type {FlightRepository}
    */
   #repository;
 

@@ -6,7 +6,7 @@ const AirportRepository = require("../repositories/airport.repository");
  */
 module.exports = class AirportService {
   /**
-   * @type {{AirportRepository}}
+   * @type {AirportRepository}
    */
   #repository;
 
